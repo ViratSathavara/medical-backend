@@ -71,8 +71,9 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
-// Mount master API routes
+// Mount master API routes (both /api and root / for resilience)
 app.use('/api', routes);
+app.use('/', routes);
 
 // 404 Catch-All
 app.use('*', (req: Request, res: Response) => {
